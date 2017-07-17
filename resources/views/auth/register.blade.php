@@ -7,48 +7,48 @@
             
             
             <label class="lb">Login</label>
-            <input type="text" class="form-control" placeholder="login" value="{{ old('login') }}" name="login" required>
+            <input type="text" class="form-control" placeholder="Login" value="{{ old('login') }}" name="login" required>
 
             @if ($errors->has('login'))
                 <span class="error-block">
-                    <strong>{{ $errors->first('login') }}</strong>
+                    {{ $errors->first('login') }}
                 </span>
             @endif
 
             <label class="lb">Password</label>
-            <input type="password" class="form-control" placeholder="password" name="password" required>
-            <input type="password" class="form-control" placeholder="password" name="password_confirmation" id="password-confirm" required>
+            <input type="password" class="form-control" placeholder="Password" name="password" required>
+            <input type="password" class="form-control" placeholder="Confirm password" name="password_confirmation" id="password-confirm" required>
 
             @if ($errors->has('password'))
                 <span class="error-block">
-                    <strong>{{ $errors->first('password') }}</strong>
+                    {{ $errors->first('password') }}
                 </span>
             @endif
 
             <label class="lb">Email</label>
-            <input type="text" class="form-control" placeholder="email" value="{{ old('email') }}" name="email" required>
+            <input type="text" class="form-control" placeholder="Email" value="{{ old('email') }}" name="email" required>
 
             @if ($errors->has('email'))
                 <span class="error-block">
-                    <strong>{{ $errors->first('email') }}</strong>
+                    {{ $errors->first('email') }}
                 </span>
             @endif
 
-            <label class="lb">Your first and last name</label>
-            <input type="text" class="form-control" placeholder="name surname" value="{{ old('name') }}" name="name">
+            <label class="lb">Name</label>
+            <input type="text" class="form-control" placeholder="Name Surname" value="{{ old('name') }}" name="name">
 
             @if ($errors->has('name'))
                 <span class="error-block">
-                    <strong>{{ $errors->first('name') }}</strong>
+                    {{ $errors->first('name') }}
                 </span>
             @endif
 
             <label class="lb">Country</label>
-            <input type="text" class="form-control" value="{{ old('country') }}" name="country">
+            <input type="text" class="form-control" placeholder="Country" value="{{ old('country') }}" name="country">
 
             @if ($errors->has('country'))
                 <span class="error-block">
-                    <strong>{{ $errors->first('country') }}</strong>
+                    {{ $errors->first('country') }}
                 </span>
             @endif
 
