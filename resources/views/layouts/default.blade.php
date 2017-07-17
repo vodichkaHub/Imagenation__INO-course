@@ -5,6 +5,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}"> 
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css') }}" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/main.css') }}">
+        <link href="css/fonts/Fresca-Regular.ttf" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
         
         <title>Account</title>
     </head>
@@ -33,6 +35,6 @@
                     </li>
                 </ul>
             @endif
-        @endsection
+        @show
     </body>
 </html>

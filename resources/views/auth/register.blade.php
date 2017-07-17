@@ -6,8 +6,8 @@
         	<h1>Sign up</h1>
             
             
-            <label class="lb">Login</label>
-            <input type="text" class="form-control" placeholder="Login" value="{{ old('login') }}" name="login" required>
+            <h5 class="lb">Login</h5>
+            <input type="text" class="form-control" value="{{ old('login') }}" name="login" required autofocus>
 
             @if ($errors->has('login'))
                 <span class="error-block">
@@ -15,9 +15,9 @@
                 </span>
             @endif
 
-            <label class="lb">Password</label>
-            <input type="password" class="form-control" placeholder="Password" name="password" required>
-            <input type="password" class="form-control" placeholder="Confirm password" name="password_confirmation" id="password-confirm" required>
+            <h5 class="lb">Password</h5>
+            <input type="password" class="form-control" name="password" required>
+            <input type="password" class="form-control" name="password_confirmation" id="password-confirm" required>
 
             @if ($errors->has('password'))
                 <span class="error-block">
@@ -25,8 +25,8 @@
                 </span>
             @endif
 
-            <label class="lb">Email</label>
-            <input type="text" class="form-control" placeholder="Email" value="{{ old('email') }}" name="email" required>
+            <h5 class="lb">Email</h5>
+            <input type="text" class="form-control" value="{{ old('email') }}" name="email" required>
 
             @if ($errors->has('email'))
                 <span class="error-block">
@@ -34,8 +34,8 @@
                 </span>
             @endif
 
-            <label class="lb">Name</label>
-            <input type="text" class="form-control" placeholder="Name Surname" value="{{ old('name') }}" name="name">
+            <h5 class="lb">Name</h5>
+            <input type="text" class="form-control" value="{{ old('name') }}" name="name">
 
             @if ($errors->has('name'))
                 <span class="error-block">
@@ -43,8 +43,8 @@
                 </span>
             @endif
 
-            <label class="lb">Country</label>
-            <input type="text" class="form-control" placeholder="Country" value="{{ old('country') }}" name="country">
+            <h5 class="lb">Country</h5>
+            <input type="text" class="form-control" value="{{ old('country') }}" name="country">
 
             @if ($errors->has('country'))
                 <span class="error-block">

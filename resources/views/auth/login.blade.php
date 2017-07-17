@@ -4,6 +4,7 @@
         {{ csrf_field() }}
         <div class="form-group">
             <h1>Sign in</h1>
+
            @if ($errors->any())
                 <div class="alert alert-info">
                     <ul>
@@ -13,11 +14,12 @@
                     </ul>
                 </div>
             @endif
-            <label class="lb" >Login or email</label>
-            <input name="email" id="input-login" type="text" class="form-control" placeholder="login/email" required>
 
-            <label class="lb" >Password</label>
-            <input name="password" type="password" class="form-control" placeholder="Password" required>
+            <h5 class="lb" >Login</h5>
+            <input name="login" id="input-login" type="text" class="form-control" required autofocus>
+
+            <h5 class="lb" >Password</h5>
+            <input name="password" type="password" class="form-control" required>
 
             <div>
                 <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
@@ -30,4 +32,4 @@
             </div>
       </div>
     </form>
-    @show
+@show
