@@ -19,6 +19,8 @@
     .btn-primary {
         background-color: black;
         border-color: black;
+        font-family: 'Indie Flower', cursive;
+        font-size: 18px;
     }
     
     .form-group {
@@ -31,9 +33,9 @@
     
     .logo {
         position: absolute;
-        top: 0;
+        top: 40px;
         width: 10%;
-        margin-left: 50px;
+        margin-left: 100px;
         float: left;
         float: top;
     }

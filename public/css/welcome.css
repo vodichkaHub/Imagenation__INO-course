@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(../img/BG222.jpg);
+    background-color: #16081F;
+    background-repeat: no-repeat;
+    background-position: center top;
+    max-width: 1920px;
+    max-height: 1080px;
+     font-family: 'Indie Flower', cursive;
+}
+
+.logo {
+    width: 200px;
+    position: absolute;
+    right: 110px;
+    top: 80px; 
+}
+
+.links {
+    position: absolute;
+    top: 260px;
+    right: 213px;  
+}
+
+.links a {
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+    border: 2px solid #F1335E;
+    margin-left: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #FFFFFD;
+}
+
+.links a:hover {
+    text-decoration: none;
+    color: #B3B3B1;
+    -webkit-transition: top 1s ease-out 1.5s;
+    -moz-transition: top 1s ease-out 1.5s;
+    -o-transition: top 1s ease-out 1.5s;
+    transition: top 1s ease-out 1.5s;
+}
+
+.go {
+    font-family: 'Indie Flower', cursive;
+    color: #FFFFFD;
+    font-size: 53px;
+    position: absolute;
+    bottom: 120px;
+    right: 190px;
+    text-transform: uppercase;
+}
+
+.go:hover {
+    color: #B3B3B1;
+    text-decoration: none;
+    -webkit-transition: top 1s ease-out 1.5s;
+    -moz-transition: top 1s ease-out 1.5s;
+    -o-transition: top 1s ease-out 1.5s;
+    transition: top 1s ease-out 1.5s;
+}
+
+.angle {
+    height: 45px;
+    margin-left: 30px;
+    padding-bottom: 10px;
+}
+
+.description {
+    /* width: 400px; */
+    position: absolute;
+    bottom: 280px;
+    right: 100px;
+}
+.description-text {
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+    color: #B3B3B1;
+    font-size: 20px;
+
+}
