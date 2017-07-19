@@ -15,9 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('account', function () {
-    return view('auth.account');
+Route::get('account/{avatar?}', function ($avatar) {
+    return view('auth.account', ['avatar' => $avatar]);
 })->name('account');
+
+Route::post('setAvatar', 'ImageController@setAvatar')->name('setAvatar');
 
 Auth::routes();
 

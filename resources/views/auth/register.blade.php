@@ -1,4 +1,5 @@
 @extends('layouts.default')
+@section('title', 'Register')
     @section('content')
 	<form action="{{ route('register') }}" method="POST">
         {{ csrf_field() }}
