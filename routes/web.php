@@ -23,6 +23,11 @@ Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
 
+Route::prefix('image')->group(function() {
+
+    Route::post('add', 'ImageController@add')->name('add');
+});
+
 Route::get('ex', function () {
     return public_path() . '/img/avatars/' . Auth::user()->id . '.jpg';
 })->middleware('checkRole:member')->name('ex');

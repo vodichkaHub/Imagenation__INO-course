@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/default.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
         
-        <title>@yield('title')</title>
+        <title>Imagenation/@yield('title')</title>
     </head>
     <body>
         <a href="{{ route('home') }}"><img src="{{ URL::asset('img/TRlogo.png') }}" alt="logo" class="logo"></a>

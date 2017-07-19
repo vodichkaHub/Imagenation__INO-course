@@ -27,9 +27,14 @@ class ImageController extends Controller
         }
     }
 
-    public function getAvatar ($id) {
-       return User::select('avatar')->where('id', $id)->first();
+
+    public function add(Request $request) {
+
+        $file = $request->file('image');
+        $fileName = $request->input('name') . '.' . $file->extension() ?: 'jpeg';
+        $destination = public_path() . '/img/works/';
+        $file->move($destination, $fileName);
+
+        
     }
-
-
 }

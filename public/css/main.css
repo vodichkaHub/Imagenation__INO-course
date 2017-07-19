@@ -38,6 +38,8 @@ body {
 
 .main__avatar {
     max-height: 40px;
+    min-width: 40px;
+    border-radius: 360px;
 }
 
 .dropdown-menu {
@@ -68,8 +70,9 @@ body {
 }
 
 .main__avatar-big img {
-    max-width: 220px;
-    max-height: 220px;
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 360px;
 }
 
 .main__avatar-big p {
@@ -110,3 +113,28 @@ body {
 .main__h2-portfolio {
     text-align: center;
 }
+
+.main__add-image {
+    margin-top: 50px;
+}
+
+.main__add-image h5 {
+    text-align: center;
+}
+.img-form {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btn-add {
+    margin-top: 15px;
+    float: right;
+}
+.img-input {
+    margin-top: 15px;
+    float: left;
+}
+.img-form input {
+    margin-bottom: 15px;
+}
+

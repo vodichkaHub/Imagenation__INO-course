@@ -12,7 +12,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>        <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/main.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
         
-        <title>@yield('title')</title>
+        <title>Imagenation/@yield('title')</title>
     </head>
     <body>
         <div class="header">
