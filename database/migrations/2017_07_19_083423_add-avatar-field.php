@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\User;
 
 class AddAvatarField extends Migration
 {
@@ -14,9 +15,7 @@ class AddAvatarField extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $avatar = new User;
-            $avatar->string('avatar')->nullable;
-            $avatar->save();
+            $table->string('avatar')->nullable;
         });
     }
 
@@ -28,7 +27,7 @@ class AddAvatarField extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $avatar->avatar->delete();
+            $table->avatar->delete();
         });
     }
 }
