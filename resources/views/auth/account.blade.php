@@ -10,17 +10,18 @@
                 <div class="row">
                     <div class="col-md-8">
                         <h3 class="main__h2-portfolio">Portfolio</h3>
+                        <h5 class="main__add-image">Add new image in your collection:</h5>
                     </div>
 
                     <div class="col-md-4">
                     <h3 class="main__h3-personal">Personal Info</h3>
                         <div class="main__avatar-big">
-                            @if (!empty($avatar)) 
-                            <img src="{{ URL::asset('img/avatars/' . $avatar) }}" class="home__avatar" alt="avatar">
+                            @if (file_exists(public_path() . '/img/avatars/' . Auth::user()->id . '.jpeg')) 
+                            <img src="{{ URL::asset('img/avatars/' . Auth::user()->id . '.jpeg') }}" class="home__avatar" alt="avatar">
                             @else
                                 <img src="{{ URL::asset('img/avatars/DefaultAvatar.png') }}" class="home__avatar" alt="avatar">
                             @endif
-                            <p>(Click on photo, if u going to reset this, then press Enter)</p>   
+                            <p>(Click on photo, if u going to reset this)</p>   
 
                             <div class="main__avatar-choose">
                                 <form action="{{ route('setAvatar') }}" method="post" enctype="multipart/form-data"> 

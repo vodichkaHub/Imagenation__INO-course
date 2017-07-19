@@ -16,7 +16,7 @@
     </head>
     <body>
         <div class="header">
-            <img src="{{ URL::asset('img/TRlogo.png') }}" alt="logo" class="logo">
+            <a href="{{ route('home') }}"><img src="{{ URL::asset('img/TRlogo.png') }}" alt="logo" class="logo"></a>
             <div class="header__nav">
             
                 <ul class="nav navbar-nav navbar-right">
@@ -27,13 +27,12 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
-                                @if (!empty($avatar)) 
-                                    <img src="{{ URL::asset('img/avatars/' . $avatar) }}" class="main__avatar" alt="avatar">
-                                @else
-                                    <img src="{{ URL::asset('img/avatars/DefaultAvatar.png') }}" class="main__avatar" alt="avatar">
-                                @endif
                             </a>
-
+                            @if (file_exists(public_path() . '/img/avatars/' . Auth::user()->id . '.jpeg')) 
+                                <img src="{{ URL::asset('img/avatars/' . Auth::user()->id . '.jpeg') }}" class="main__avatar" alt="avatar">
+                            @else
+                                <img src="{{ URL::asset('img/avatars/DefaultAvatar.png') }}" class="main__avatar" alt="avatar">
+                            @endif
                             <ul class="dropdown-menu" role="menu">
                                 <li>
                                     <a href="{{ route('account') }}">

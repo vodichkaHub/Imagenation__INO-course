@@ -16,7 +16,7 @@
                 </div>
             @endif
 
-            <h5 class="lb" >Login</h5>
+            <h5 class="lb" >Email</h5>
             <input name="email" id="input-login" type="text" class="form-control" required autofocus>
 
             <h5 class="lb" >Password</h5>

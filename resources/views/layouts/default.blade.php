@@ -11,7 +11,7 @@
         <title>@yield('title')</title>
     </head>
     <body>
-        <img src="{{ URL::asset('img/TRlogo.png') }}" alt="logo" class="logo">
+        <a href="{{ route('home') }}"><img src="{{ URL::asset('img/TRlogo.png') }}" alt="logo" class="logo"></a>
         @yield('content')
     </body>
 </html>

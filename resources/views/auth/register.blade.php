@@ -56,4 +56,4 @@
             <input type="submit" value="Sign up!" class="lb btn btn-primary">
       </div>
     </form>
-    @show
+    @endsection
