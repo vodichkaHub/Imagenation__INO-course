@@ -3,6 +3,22 @@
     @section('content')
 
             <div class="container-fluid">
+            @if (session('Error') || $errors->any())
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="error">{{ session('Error') }}</p>
+                    @if ($errors->any())
+                        <div class="alert alert-info">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
+            </div>
+            @endif
                 <div class="main">
                     <h1 class="main__profile">Profile</h1>
                     
@@ -13,7 +29,7 @@
                         <div class="main__add-image">
                             <h5>Add new image in your collection:</h5>
                             <div class="form-group">
-                                <form action="{{ route('add') }}" method="post" class="form-group img-form">
+                                <form action="{{ route('add') }}" method="post" enctype="multipart/form-data" class="form-group img-form">
                                     {{ csrf_field() }}
                                     <input type="text" name="name" placeholder="Photo title" class="form-control name-input" required>
                                     <input type="text" name="width" placeholder="Width (optional)" class="form-control width-input">

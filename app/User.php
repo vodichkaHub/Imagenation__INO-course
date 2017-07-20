@@ -31,15 +31,20 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role');
     }
 
-        public function hasRole($role)
+    public function images() {
+        return $this->hasMany('App\Images');
+    }    
+
+    public function hasRole($role)
     {
     	if ($this->roles()->where('name', $role)->first()) {
     		return true;
 	    }
 	    return false;
     }
-    public function hasAnyRole($roles)
-    {
+
+    public function hasAnyRole($roles){
+        
     	if (is_array($roles)) {
     		foreach ($roles as $role) {
     			if ($this->hasRole($role)) {

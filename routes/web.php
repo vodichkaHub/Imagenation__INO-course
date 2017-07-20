@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('account', 'HomeController@account')->middleware('auth')->name('account');
 
-Route::post('setAvatar', 'ImageController@setAvatar')->middleware('auth')->name('setAvatar');
+Route::post('setAvatar', 'AvatarController@setAvatar')->middleware('auth')->name('setAvatar');
 
 Auth::routes();
 
