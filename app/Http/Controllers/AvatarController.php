@@ -9,7 +9,7 @@ class AvatarController extends Controller
 
     public function __construct() {
         $this->validate($request, [
-            'ava' => 'required|dimensions:min_width=100,min_height_100'
+            'ava' => 'required|image|dimensions:min_width=100,min_height_100'
         ]);
     }
 

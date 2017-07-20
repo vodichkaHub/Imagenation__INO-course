@@ -19,10 +19,10 @@ class ImageController extends Controller
     public function add(Request $request) {
 
         $validator = Validator::make($request->all(), [
-            'name' => 'string|max:100',
+            'name' => 'alpha|string|max:100|unique:images,name',
             'width' => 'numeric|nullable',
             'height' => 'numeric|nullable',
-            'image' => 'mimes:jpeg,jpg,jpe,tiff,png'
+            'image' => 'image'
         ]);
 
         if ($validator->fails()) {
