@@ -29,9 +29,9 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
                             @if (file_exists(public_path() . '/img/avatars/' . Auth::user()->id . '.jpeg')) 
-                                <img src="{{ URL::asset('img/avatars/' . Auth::user()->id . '.jpeg') }}" class="main__avatar" alt="avatar">
+                                <img src="{{ URL::asset('img/avatars/' . Auth::user()->id . '.jpeg') }}" class="small__avatar" alt="avatar">
                             @else
-                                <img src="{{ URL::asset('img/avatars/DefaultAvatar.png') }}" class="main__avatar" alt="avatar">
+                                <img src="{{ URL::asset('img/avatars/DefaultAvatar.png') }}" class="small__avatar" alt="avatar">
                             @endif
                             <ul class="dropdown-menu" role="menu">
                                 <li>

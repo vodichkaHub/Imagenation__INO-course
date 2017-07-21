@@ -33,8 +33,11 @@ class ImageController extends Controller
 
             $file = $request->file('image');
             $fileName = $request->input('name') . '.' . $file->extension() ?: 'jpeg';
-            $destination = public_path() . '/img/works/';
+            $WMdestination = public_path() . '/img/works/';
+            $destination = public_path() . '/img/source/';
             $file->move($destination, $fileName);
+
+            $this->setWaterMark($destination . $fileName);
 
             $section = Section::where('name', $request->input('section'))->first();
 
@@ -56,4 +59,20 @@ class ImageController extends Controller
             return back()->withInput();
         }
     }
+
+    protected function setWaterMark($path) {
+
+        $im = imagecreatefromjpeg($path);
+        $stamp = imagecreatefrompng(public_path() . '/img/TRlogo-waterMark.png');
+
+        $marge_right = 10;
+        $marge_bottom = 10;
+        $sx = imagesx($stamp);
+        $sy = imagesy($stamp);
+
+        imagecopy($im, $stamp, imagesx($im) - $sx - $marge_right, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($stamp), imagesy($stamp));
+
+        imagejpeg($im, $path);
+        imagedestroy($im);
+    } 
 }

@@ -36,14 +36,15 @@ body {
     display: inline-block;
 }
 
-.main__avatar {
+.small__avatar {
     max-height: 40px;
     min-width: 40px;
     border-radius: 360px;
 }
 
 .dropdown-menu {
-    border: none;
+    border: 1px solid grey;
+    text-align: center;
 }
 
 .main__profile {
@@ -115,7 +116,7 @@ body {
 }
 
 .main__add-image {
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 .main__add-image h5 {
@@ -136,5 +137,60 @@ body {
 }
 .img-form input {
     margin-bottom: 15px;
+}
+
+.main__portfolio__work-image {
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
+    margin-left: auto;
+    margin-top: 50px;
+
+}
+
+.main__portfolio__work {
+    text-align: center;
+}
+
+.home__content__single-image {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.home__content__single-image__info {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.home__content__single-image__info-avatar {
+    display: inline-block;
+    position: relative;
+}
+
+.home__content__single-image__info-title {
+    display: inline-block;
+    width: 90%;
+    font-size: 20px;
+}
+
+.home__content__single-image__info-name {
+    display: inline-block;
+    position: relative;
+}
+
+.home__content__single-image__work {
+    text-align: center;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.home__content__single-image__work img {
+    max-width: 100%;
+    max-height: 100%;
 }
 

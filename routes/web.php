@@ -29,5 +29,8 @@ Route::prefix('image')->group(function() {
 });
 
 Route::get('ex', function () {
-    return public_path() . '/img/avatars/' . Auth::user()->id . '.jpg';
-})->middleware('checkRole:member')->name('ex');
+$path_array = App\Image::select('path')->users()->select('name')->get();
+foreach($path_array as $path) {
+    echo $path;
+}
+})->name('ex');

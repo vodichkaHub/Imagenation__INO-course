@@ -48,16 +48,12 @@
                                 </form>
                             </div>
                         </div>
-
-                        <div class="main__portfolio">
-                            
-                        </div>
                     </div>
 
                     <div class="col-md-4">
                     <h3 class="main__h3-personal">Personal Info</h3>
                         <div class="main__avatar-big">
-                            @if (file_exists(public_path() . '/img/avatars/' . Auth::user()->id . '.jpeg')) 
+                            @if (file_exists(public_path() . '/img/avatars/' . Auth::id() . '.jpeg')) 
                             <img src="{{ URL::asset('img/avatars/' . Auth::user()->id . '.jpeg') }}" class="home__avatar" alt="avatar">
                             @else
                                 <img src="{{ URL::asset('img/avatars/DefaultAvatar.png') }}" class="home__avatar" alt="avatar">
@@ -80,6 +76,23 @@
                                 <li>Name: {{ Auth::user()->name }}</li>
                                 <li>Country: {{ Auth::user()->country  }}</li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="main__portfolio">
+                            @foreach ($path_array as $path)
+                                <div class="main__portfolio__work">
+                                    <div class="main__portfolio__work-info">
+                                        
+                                    </div>
+
+                                    <div class="main__portfolio__work-image">
+                                        <img src="{{ URL::asset('img/works/' . $path['path']) }}" alt="{{ Auth::user()->name }}">
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
