@@ -27,7 +27,9 @@
                         @endforeach
 
                     </div>
-                    <a href="#">More</a>
+                    <div class="home__content__link-more">
+                        <p><a href="#">More</a></p>
+                    </div>
                 </div>
             </div>
         </div>

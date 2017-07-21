@@ -37,7 +37,7 @@ class ImageController extends Controller
             $destination = public_path() . '/img/source/';
             $file->move($destination, $fileName);
 
-            $this->setWaterMark($destination . $fileName);
+            $this->setWaterMark($destination . $fileName, $WMdestination . $fileName);
 
             $section = Section::where('name', $request->input('section'))->first();
 
@@ -51,16 +51,16 @@ class ImageController extends Controller
             $newImg->section_id = $section->id;
             $newImg->save();
 
-            session(['success' => 'Image successfuly added!']);
+            $request->session()->flash('success', 'Image successfuly added!');
             return back()->withInput();
         }
         else {
-            session(['Error' => 'Something went wrong, try another one']);
+            $request->session()->flash('Error', 'Has no file, try another one');
             return back()->withInput();
         }
     }
 
-    protected function setWaterMark($path) {
+    protected function setWaterMark($path, $WMdestination) {
 
         $im = imagecreatefromjpeg($path);
         $stamp = imagecreatefrompng(public_path() . '/img/TRlogo-waterMark.png');
@@ -72,7 +72,8 @@ class ImageController extends Controller
 
         imagecopy($im, $stamp, imagesx($im) - $sx - $marge_right, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($stamp), imagesy($stamp));
 
-        imagejpeg($im, $path);
+        header('Content-type: image/jpeg');
+        imagejpeg($im, $WMdestination);
         imagedestroy($im);
     } 
 }

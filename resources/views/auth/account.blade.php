@@ -3,10 +3,19 @@
     @section('content')
 
             <div class="container-fluid">
+
+            @if (session('success') != null)
+            <div class="alert alert-info">
+                <p>{{ session('success') }}</p>
+            </div>
+            @endif
+
             @if (session('Error') || $errors->any())
             <div class="row">
                 <div class="col-md-12">
+                <div class="alert alert-info">
                     <p class="error">{{ session('Error') }}</p>
+                </div>
                     @if ($errors->any())
                         <div class="alert alert-info">
                             <ul>
@@ -19,6 +28,7 @@
                 </div>
             </div>
             @endif
+
                 <div class="main">
                     <h1 class="main__profile">Profile</h1>
                     
@@ -82,6 +92,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="main__portfolio">
+                        @if (!empty($path_array))
                             @foreach ($path_array as $path)
                                 <div class="main__portfolio__work">
                                     <div class="main__portfolio__work-info">
@@ -89,10 +100,13 @@
                                     </div>
 
                                     <div class="main__portfolio__work-image">
-                                        <img src="{{ URL::asset('img/works/' . $path['path']) }}" alt="{{ Auth::user()->name }}">
+                                        <img src="{{ URL::asset('img/source/' . $path['path']) }}" alt="{{ Auth::user()->name }}">
                                     </div>
                                 </div>
                             @endforeach
+                        @else
+                            <p>You have no photos yet) You can start easily! Just fill form above ^^^</p>
+                        @endif
                         </div>
                     </div>
                 </div>
