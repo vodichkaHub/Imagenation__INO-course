@@ -54,7 +54,7 @@ body {
     margin-bottom: 50px;
 }
 
-.col-md-4 {
+.account__info-block {
     border-left: 1px solid grey;
 }
 
@@ -140,12 +140,14 @@ body {
 }
 
 .main__portfolio__work-image {
-    max-width: 100%;
-    max-height: 100%;
-    position: relative;
+    text-align: center;
     margin-left: auto;
     margin-top: 50px;
+}
 
+.main__portfolio__work-image img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .main__portfolio__work {
@@ -160,10 +162,6 @@ body {
 }
 
 .home__content__single-image__info {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
     margin-bottom: 10px;
 }
 
@@ -174,7 +172,7 @@ body {
 
 .home__content__single-image__info-title {
     display: inline-block;
-    width: 90%;
+    width: 70%;
     font-size: 20px;
 }
 
@@ -193,8 +191,24 @@ body {
     max-width: 100%;
     max-height: 100%;
 }
+.row {
+    margin-bottom: 10px;
+}
+.admin__list{
+    width: 100%;
+    margin-top: 50px;
+}
+.listOfUsers {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-.home__content__link-more {
-    text-align: center;
+.admin__link {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.listOfWorks {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
 }
 

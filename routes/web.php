@@ -23,14 +23,27 @@ Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
 
+Route::prefix('admin')->group(function() {
+
+    Route::get('account', 'AdminController@getAllUsers')->name('admin');
+
+    Route::get('works/{id}', 'AdminController@getAllWorksByAuthor')->name('listOfWorks');
+
+    Route::get('setBan/{id}', 'AdminController@setBan')->name('setBan');
+
+    Route::get('unsetBan/{id}', 'AdminController@unsetBan')->name('unsetBan');
+
+    Route::get('deleteImg/{image_id}', 'AdminController@deleteImage')->name('deleteImg');
+});
+
 Route::prefix('image')->group(function() {
 
     Route::post('add', 'ImageController@add')->name('add');
+
+    Route::get('uploadPage', 'ImageController@handler');
 });
 
 Route::get('ex', function () {
-$path_array = App\Image::select('path')->users()->select('name')->get();
-foreach($path_array as $path) {
-    echo $path;
-}
+$path = App\Image::select('path')->where('id', 23)->first();
+return var_dump($path['path']);
 })->name('ex');

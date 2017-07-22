@@ -83,6 +83,11 @@ class RegisterController extends Controller
         $user->roles()->attach($role_member);
     }
 
+    public function setNullBan($user){
+
+        $user->ban = 0;
+    }
+
     public function register(Request $request){
 
         $this->validator($request->all())->validate();
@@ -90,6 +95,7 @@ class RegisterController extends Controller
         event(new Registered($user = $this->create($request->all())));
 
         $this->setRole($user);
+        $this->setNullBan($user);
 
         $this->guard()->login($user);
 

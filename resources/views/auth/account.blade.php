@@ -36,31 +36,35 @@
                 <div class="row">
                     <div class="col-md-8">
                         <h3 class="main__h2-portfolio">Portfolio</h3>
-                        <div class="main__add-image">
-                            <h5>Add new image in your collection:</h5>
-                            <div class="form-group">
-                                <form action="{{ route('add') }}" method="post" enctype="multipart/form-data" class="form-group img-form">
-                                    {{ csrf_field() }}
-                                    <input type="text" name="name" placeholder="Photo title" class="form-control name-input" required>
-                                    <input type="text" name="width" placeholder="Width (optional)" class="form-control width-input">
-                                    <input type="text" name="height" placeholder="Height (optional)" class="form-control hieght-input">
-                                    <select name="section" class="form-control section-input">
-                                        <option>Nature</option>
-                                        <option>Animals</option>
-                                        <option>City</option>
-                                        <option>Cars</option>
-                                        <option>Girls</option>
-                                        <option>Beach</option>
-                                        <option>Extreme</option>
-                                    </select>
-                                    <input type="file" name="image" class="img-input">
-                                    <input type="submit" value="Post" class="btn btn-default btn-add">
-                                </form>
+                        @if (Auth::user()->ban == 0)
+                            <div class="main__add-image">
+                                <h5>Add new image in your collection:</h5>
+                                <div class="form-group">
+                                    <form action="{{ route('add') }}" method="post" enctype="multipart/form-data" class="form-group img-form">
+                                        {{ csrf_field() }}
+                                        <input type="text" name="name" placeholder="Photo title" class="form-control name-input" required>
+                                        <select name="section" class="form-control section-input">
+                                            <option>Nature</option>
+                                            <option>Animals</option>
+                                            <option>City</option>
+                                            <option>Cars</option>
+                                            <option>Girls</option>
+                                            <option>Beach</option>
+                                            <option>Extreme</option>
+                                        </select>
+                                        <input type="file" name="image" class="img-input">
+                                        <input type="submit" value="Post" class="btn btn-default btn-add">
+                                    </form>
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="alert alert-info">
+                                <p>You can`t post new photos, because you have been banned. Write to administrator for getting info</p>
+                            </div>
+                        @endif
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4 account__info-block">
                     <h3 class="main__h3-personal">Personal Info</h3>
                         <div class="main__avatar-big">
                             @if (file_exists(public_path() . '/img/avatars/' . Auth::id() . '.jpeg')) 
@@ -100,7 +104,7 @@
                                     </div>
 
                                     <div class="main__portfolio__work-image">
-                                        <img src="{{ URL::asset('img/source/' . $path['path']) }}" alt="{{ Auth::user()->name }}">
+                                        <img class="lazy" data-original="{{ 'img/works/' . $path['path'] }}" alt="{{ Auth::user()->name }}">
                                     </div>
                                 </div>
                             @endforeach
@@ -110,5 +114,20 @@
                         </div>
                     </div>
                 </div>
-            </div>   
+            </div>
+
+<script>
+    $(function() {
+        $("img.lazy").lazyload({
+            effect : "fadeIn",
+            event : "sporty"
+        });
+    });
+
+    $(window).bind("load", function() {
+        var timeout = setTimeout(function() {
+            $("img.lazy").trigger("sporty")
+        }, 5000);
+    });
+</script>   
     @endsection

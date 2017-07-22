@@ -37,12 +37,12 @@ class HomeController extends Controller
     }
 
     protected function getAllNames() {
-        return User::select('name', 'avatar', 'id')->get();
+        return User::select('name', 'avatar', 'id', 'country')->get();
     }
 
     protected function getAllWorks() {
 
-       return Image::select('path', 'user_id', 'name')->limit(15)->get();
+       return Image::select('path', 'user_id', 'name')->get();
     }
 
     protected function getUserWorks($id) {

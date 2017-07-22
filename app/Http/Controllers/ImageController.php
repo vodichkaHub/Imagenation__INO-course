@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Validator;
 use App\User;
 use App\Section;
@@ -32,6 +33,7 @@ class ImageController extends Controller
         if ($request->hasFile('image')) {
 
             $file = $request->file('image');
+            $image = getimagesize($file);
             $fileName = $request->input('name') . '.' . $file->extension() ?: 'jpeg';
             $WMdestination = public_path() . '/img/works/';
             $destination = public_path() . '/img/source/';
@@ -44,8 +46,8 @@ class ImageController extends Controller
             $newImg = new Image;
             $newImg->name = $request->input('name');
             $newImg->path = $fileName;
-            $newImg->width = $request->input('width');
-            $newImg->height = $request->input('height');
+            $newImg->width = $image['0'];
+            $newImg->height = $image['1'];
 
             $newImg->user_id = Auth::user()->id;
             $newImg->section_id = $section->id;
@@ -63,17 +65,20 @@ class ImageController extends Controller
     protected function setWaterMark($path, $WMdestination) {
 
         $im = imagecreatefromjpeg($path);
-        $stamp = imagecreatefrompng(public_path() . '/img/TRlogo-waterMark.png');
+        $stamp = imagecreatefrompng(public_path() . '/img/WMImagenation.png');
 
-        $marge_right = 10;
-        $marge_bottom = 10;
+        $marge_right = 50;
+        $marge_bottom = 59;
         $sx = imagesx($stamp);
         $sy = imagesy($stamp);
 
-        imagecopy($im, $stamp, imagesx($im) - $sx - $marge_right, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($stamp), imagesy($stamp));
+        for ($i = 0; $i<3; $i++) {
+            imagecopy($im, $stamp, imagesx($im) - $sx - $marge_right, imagesy($im) - $sy - $marge_bottom, 0, 0, imagesx($stamp), imagesy($stamp));
+            $marge_bottom += 300;
+            $marge_right += 400;
+        }
 
-        header('Content-type: image/jpeg');
         imagejpeg($im, $WMdestination);
         imagedestroy($im);
-    } 
+    }
 }
