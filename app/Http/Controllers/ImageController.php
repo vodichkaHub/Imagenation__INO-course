@@ -41,7 +41,7 @@ class ImageController extends Controller
 
             $this->setWaterMark($destination . $fileName, $WMdestination . $fileName);
 
-            $section = Section::where('name', $request->input('section'))->first();
+            $section = Section::where('title', $request->input('section'))->first();
 
             $newImg = new Image;
             $newImg->name = $request->input('name');

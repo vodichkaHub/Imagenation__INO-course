@@ -29,6 +29,17 @@
             </div>
             @endif
 
+            @if (!empty($message))
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-info">
+                            {{ $message }}
+                            <a href="{{ route('hideMessage') }}">| OK</a>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
                 <div class="main">
                     <h1 class="main__profile">Profile</h1>
                     

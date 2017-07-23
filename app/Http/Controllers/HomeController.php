@@ -32,11 +32,23 @@ class HomeController extends Controller
 
     public function account() {
 
-        $path_array = $this->getUserWorks(Auth::user()->id);
-        return view('auth.account', ['path_array' => $path_array]);
+        $message = User::select('message')->where('id', Auth::user()->id)->first();
+
+        if (empty($message)) {
+            $path_array = $this->getUserWorks(Auth::user()->id);
+            return view('auth.account', ['path_array' => $path_array]);
+        }
+        else {
+            $path_array = $this->getUserWorks(Auth::user()->id);
+            return view('auth.account', [
+                'path_array' => $path_array,
+                'message' => $message['message'],
+            ]);
+        }
     }
 
     protected function getAllNames() {
+
         return User::select('name', 'avatar', 'id', 'country')->get();
     }
 
@@ -48,5 +60,13 @@ class HomeController extends Controller
     protected function getUserWorks($id) {
 
         return Image::select('path')->where('user_id', $id)->get();
+    }
+
+    public function hideMessage() {
+
+        $user = User::where('id', Auth::user()->id)->first();
+        $user['message'] = null;
+        $message->save();
+        return back();
     }
 }

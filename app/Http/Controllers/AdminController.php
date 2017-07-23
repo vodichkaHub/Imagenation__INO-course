@@ -42,8 +42,17 @@ class AdminController extends Controller
     }
 
     public function deleteImage($image_id) {
-        $path = Image::select('path')->where('id', $image_id)->first();
+
+        $path = Image::select('path', 'name')->where('id', $image_id)->first();
+
+        $joinUser = Image::join('users', 'images.user_id', '=', 'users.id')->where('images.id', $image_id)->first();
+        $user = User::where('id', $joinUser->id)->first();
+        
+        $user->message = 'Your image with title ' .  $path['name'] . ' was deleted by administrator';
+
         Image::where('id', $image_id)->delete();
+        
+        $user->save();
 
         unlink(public_path() . '/img/works/' . $path['path']);
         unlink(public_path() . '/img/source/' . $path['path']);

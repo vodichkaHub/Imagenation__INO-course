@@ -36,6 +36,10 @@ body {
     display: inline-block;
 }
 
+.container-fluid {
+    margin-top: 60px;
+}
+
 .small__avatar {
     max-height: 40px;
     min-width: 40px;
@@ -158,7 +162,6 @@ body {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
 }
 
 .home__content__single-image__info {

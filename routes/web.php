@@ -15,11 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+
 Route::get('account', 'HomeController@account')->middleware('auth')->name('account');
 
-Route::post('setAvatar', 'AvatarController@setAvatar')->middleware('auth')->name('setAvatar');
+Route::get('hideMessage', 'HomeController@hideMessage')->name('hideMessage');
 
-Auth::routes();
+Route::post('setAvatar', 'AvatarController@setAvatar')->middleware('auth')->name('setAvatar');
 
 Route::get('home', 'HomeController@index')->name('home');
 
@@ -40,10 +42,9 @@ Route::prefix('image')->group(function() {
 
     Route::post('add', 'ImageController@add')->name('add');
 
-    Route::get('uploadPage', 'ImageController@handler');
 });
 
 Route::get('ex', function () {
-$path = App\Image::select('path')->where('id', 23)->first();
-return var_dump($path['path']);
+ $user = App\Image::join('users', 'images.user_id', '=', 'users.id')->where('images.id', 1)->first();
+return var_dump($user['message']);
 })->name('ex');

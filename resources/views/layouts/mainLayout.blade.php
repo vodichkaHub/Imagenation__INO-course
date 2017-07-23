@@ -27,6 +27,7 @@
                         <li class="header_nav-links"><a href="{{ route('login') }}">Login</a></li>
                         <li class="header_nav-links"><a href="{{ route('register') }}">Register</a></li>
                     @else
+                       
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -50,7 +51,7 @@
                                     <br>
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                    document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -59,6 +60,7 @@
                                 </li>
                             </ul>
                         </li>
+                    
                     @endif
                 </ul>
             </div>
