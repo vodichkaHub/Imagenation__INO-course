@@ -5,27 +5,38 @@ body {
 .a {
     color: black;
 }
-
+.hide {
+    display: none;
+}
 .header {
     position: relative;
     top: 0;
-    opacity: 0.85;
     height: 80px;
     width: 100%;
     border-bottom: 1px solid grey;
 }
 
 .logo {
-    float: left;
-    margin-left: 115px;
-    margin-top: 15px;
+    margin-top: 15px; 
     height: 50px;
 }
 
-.header__nav {
+.sub-title {
+    margin-top: 30px;
+    text-align: center;
+}
+.fa  {
+    color: black;
+}
+.fa-shopping-cart {
+    margin-top: 25px; 
+    font-size: 25px;
     float: right;
-    margin-right: 115px;
+}
+
+.header__nav {
     margin-top: 20px;
+    float: right;
 }
 
 .header__nav a {
@@ -37,7 +48,7 @@ body {
 }
 
 .container-fluid {
-    margin-top: 60px;
+    margin-top: 20px;
 }
 
 .small__avatar {
@@ -147,11 +158,11 @@ body {
     text-align: center;
     margin-left: auto;
     margin-top: 50px;
+    max-width: 100%;
 }
 
 .main__portfolio__work-image img {
     max-width: 100%;
-    max-height: 100%;
 }
 
 .main__portfolio__work {
@@ -162,6 +173,7 @@ body {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 45px;
 }
 
 .home__content__single-image__info {
@@ -194,6 +206,10 @@ body {
     max-width: 100%;
     max-height: 100%;
 }
+.fa-cart-plus {
+    font-size: 22px;
+    float: right;
+}
 .row {
     margin-bottom: 10px;
 }
@@ -215,3 +231,53 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.cart__title {
+    margin-top: 50px;
+    position: relative;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.cart__info-img {
+    max-width: 100%;
+}
+
+.cart__info {
+    text-align: center;
+    position: relative;
+    vertical-align: middle;
+}
+.cart__info-str {
+     margin-right: 14px;
+}
+.cart__info-link {
+    color: white;
+}
+
+.home__addition__section-input, .home__addition__width-input {
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 360px;
+    margin-top: 25px;
+    border-color: black;
+    font-size: 15px;
+}
+
+.home__addition__section-input{
+    width: 46%;
+}
+.home__addition__width-input{
+    width: 33%;
+}
+
+.home__addition__button {
+    border-radius: 360px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    background-color: transparent;
+    height: 36px;
+}
+.home__addition__button:hover {
+    background-color: #FAF3F3;
+}

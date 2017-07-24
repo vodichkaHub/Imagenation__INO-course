@@ -22,7 +22,7 @@ class ImageController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'alpha|string|max:100|unique:images,name',
             'width' => 'numeric|nullable',
-            'height' => 'numeric|nullable',
+            'height' => 'same:width',
             'image' => 'image'
         ]);
 
@@ -48,6 +48,7 @@ class ImageController extends Controller
             $newImg->path = $fileName;
             $newImg->width = $image['0'];
             $newImg->height = $image['1'];
+            $newImg->price = $request->input('price');
 
             $newImg->user_id = Auth::user()->id;
             $newImg->section_id = $section->id;
@@ -80,5 +81,12 @@ class ImageController extends Controller
 
         imagejpeg($im, $WMdestination);
         imagedestroy($im);
+    }
+
+    public function showImage ($imageId) {
+
+        $path = Image::select('path')->where('id', $imageId)->first();
+        $redirect = 'img/works/' . $path['path'];
+        return redirect($redirect);
     }
 }

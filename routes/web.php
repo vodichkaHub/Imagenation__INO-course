@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +25,8 @@ Route::post('setAvatar', 'AvatarController@setAvatar')->middleware('auth')->name
 
 Route::get('home', 'HomeController@index')->name('home');
 
+Route::post('select', 'HomeController@selectBy')->name('selectBy');
+
 Route::prefix('admin')->group(function() {
 
     Route::get('account', 'AdminController@getAllUsers')->name('admin');
@@ -38,13 +40,25 @@ Route::prefix('admin')->group(function() {
     Route::get('deleteImg/{image_id}', 'AdminController@deleteImage')->name('deleteImg');
 });
 
+Route::prefix('cart')->group(function() {
+
+    Route::get('show', 'CartController@showCart')->name('showCart');
+
+    Route::get('add/{imageId}', 'CartController@add')->name('addToCart');
+
+    Route::get('buy/{imageId}', 'CartController@buy')->name('buy');
+
+    Route::get('download/{imageId}', 'CartController@download')->name('download');
+});
+
 Route::prefix('image')->group(function() {
 
     Route::post('add', 'ImageController@add')->name('add');
 
+    Route::get('show/{imageId}', 'ImageController@showImage')->name('showImage');
 });
 
-Route::get('ex', function () {
- $user = App\Image::join('users', 'images.user_id', '=', 'users.id')->where('images.id', 1)->first();
-return var_dump($user['message']);
+Route::any('ex', function (Request $request) {
+return $request->input('section');
+
 })->name('ex');

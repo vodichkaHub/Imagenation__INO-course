@@ -46,6 +46,7 @@
                         <p class="listOfWorks">SECTION: {{ $work->title }} |</p>
                     </div>
                     <div class="col-md-2">
+                        <a href="{{ route('showImage', ['imageId' => $work->id]) }}" class="admin__link">Show image |</a>
                         <a href="{{ route('deleteImg', ['image_id' => $work->id]) }}" class="admin__link">Delete</a>
                     </div>
                     <div class="col-md-2"></div>

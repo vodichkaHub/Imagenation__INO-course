@@ -54,6 +54,7 @@
                                     <form action="{{ route('add') }}" method="post" enctype="multipart/form-data" class="form-group img-form">
                                         {{ csrf_field() }}
                                         <input type="text" name="name" placeholder="Photo title" class="form-control name-input" required>
+                                        <input type="text" name="price" placeholder="Price (USD)" class="form-control name-input" required>
                                         <select name="section" class="form-control section-input">
                                             <option>Nature</option>
                                             <option>Animals</option>
@@ -104,28 +105,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
+                
                         <div class="main__portfolio">
                         @if (!empty($path_array))
-                            @foreach ($path_array as $path)
-                                <div class="main__portfolio__work">
-                                    <div class="main__portfolio__work-info">
-                                        
-                                    </div>
-
-                                    <div class="main__portfolio__work-image">
-                                        <img class="lazy" data-original="{{ 'img/works/' . $path['path'] }}" alt="{{ Auth::user()->name }}">
-                                    </div>
-                                </div>
-                            @endforeach
+                            <div class="row">
+                                @foreach ($path_array as $path)
+                                    
+                                        <div class="col-md-3">
+                                            <div class="main__portfolio__work-image">
+                                                <a href="{{ route('showImage', ['imageId' => $path['id']]) }}"><img class="lazy" data-original="{{ 'img/works/' . $path['path'] }}" alt="{{ Auth::user()->name }}"></a>
+                                            </div>
+                                        </div>
+                                    
+                                @endforeach
+                            </div>
                         @else
                             <p>You have no photos yet) You can start easily! Just fill form above ^^^</p>
                         @endif
+
                         </div>
-                    </div>
                 </div>
-            </div>
+            
 
 <script>
     $(function() {
