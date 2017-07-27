@@ -21,13 +21,12 @@ class ImageController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'alpha|string|max:100|unique:images,name',
-            'width' => 'numeric|nullable',
-            'height' => 'same:width',
-            'image' => 'image'
+            'image' => 'image',
         ]);
 
         if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
+            
+            return back()->withErrors($validator);
         }
 
         if ($request->hasFile('image')) {

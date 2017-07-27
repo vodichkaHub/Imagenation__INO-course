@@ -1,21 +1,12 @@
 <?php
-use Illuminate\Http\Request;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
+
+Route::post('auth', 'Auth\LoginController@authenticate')->name('auth');
 
 Route::get('account', 'HomeController@account')->middleware('auth')->name('account');
 
@@ -44,7 +35,7 @@ Route::prefix('cart')->group(function() {
 
     Route::get('show', 'CartController@showCart')->name('showCart');
 
-    Route::get('add/{imageId}', 'CartController@add')->name('addToCart');
+    Route::any('add', 'CartController@add')->name('addToCart');
 
     Route::get('buy/{imageId}', 'CartController@buy')->name('buy');
 
@@ -57,8 +48,3 @@ Route::prefix('image')->group(function() {
 
     Route::get('show/{imageId}', 'ImageController@showImage')->name('showImage');
 });
-
-Route::any('ex', function (Request $request) {
-return $request->input('section');
-
-})->name('ex');

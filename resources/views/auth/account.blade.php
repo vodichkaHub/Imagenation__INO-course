@@ -10,23 +10,23 @@
             </div>
             @endif
 
-            @if (session('Error') || $errors->any())
-            <div class="row">
-                <div class="col-md-12">
-                <div class="alert alert-info">
-                    <p class="error">{{ session('Error') }}</p>
-                </div>
-                    @if ($errors->any())
+            @if (session('Error'))
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="alert alert-info">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
+                            <p class="error">{{ session('Error') }}</p>
                         </div>
-                    @endif
+                    </div>
                 </div>
-            </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-info">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             @endif
 
             @if (!empty($message))
@@ -107,9 +107,9 @@
                 </div>
                 
                         <div class="main__portfolio">
-                        @if (!empty($path_array))
+                        @if (!empty($pathArray))
                             <div class="row">
-                                @foreach ($path_array as $path)
+                                @foreach ($pathArray as $path)
                                     
                                         <div class="col-md-3">
                                             <div class="main__portfolio__work-image">

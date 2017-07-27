@@ -8,19 +8,19 @@ use App\Image;
 
 class AdminController extends Controller
 {
-    public function __constract () {
+    public function __construct () {
+
         $this->middleware('checkRole:administrator');
     }
 
     public function getAllUsers() {
 
         $users = User::select('id', 'name', 'login', 'country', 'avatar', 'ban')->get();
-
         return view('adminAccount', ['users' => $users]);
     }
 
     public function getAllWorksByAuthor($id) {
-
+        
         $works = Image::join('sections', 'images.section_id', '=', 'sections.id')->select('images.id', 'images.name', 'width', 'height', 'sections.title')->where('images.user_id', $id)->get();    
         return view('adminAccount', ['works' => $works]);
     }

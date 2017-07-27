@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('title', 'Login')
     @section('content')
-    <form action="{{ route('login') }}" method="POST">
+    <form action="{{ route('auth') }}" method="POST">
         {{ csrf_field() }}
         <div class="form-group">
             <h1>Sign in</h1>
@@ -16,8 +16,8 @@
                 </div>
             @endif
 
-            <h5 class="lb" >Email</h5>
-            <input name="email" id="input-login" type="text" class="form-control" required autofocus>
+            <h5 class="lb" >Email or login</h5>
+            <input name="login" id="input-login" type="text" class="form-control" required autofocus>
 
             <h5 class="lb" >Password</h5>
             <input name="password" type="password" class="form-control" required>

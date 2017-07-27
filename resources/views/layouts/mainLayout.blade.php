@@ -16,6 +16,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>        <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/main.css') }}">
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/tuupola-jquery_lazyload-2cfbdb5/jquery.lazyload.min.js"></script>
+        <script src="js/add-to-cart.js"></script>
+        
         
         <title>Imagenation/@yield('title')</title>
     </head>
