@@ -29,7 +29,7 @@ class CartController extends Controller
         $imageId = $request->input('image_id');
         $user = Auth::user()->id;
 
-        if (!cartRowIsset($imageId, $user)) {
+        if (!$this->cartRowIsset($imageId, $user)) {
 
             $buy = new Cart;
             $buy->user_id = $user;
@@ -39,7 +39,7 @@ class CartController extends Controller
         }
     }
 
-    protected function cartRowIsset($imageId, $id) {
+    public function cartRowIsset($imageId, $id) {
 
         $check = Cart::select('user_id')->where('image_id', $imageId)->get();
         foreach ($check as $point) {
