@@ -39,6 +39,8 @@ Route::prefix('cart')->group(function() {
 
     Route::get('buy/{imageId}', 'CartController@buy')->name('buy');
 
+    Route::get('buy', 'CartController@buyAll')->name('buyAll');
+
     Route::get('download/{imageId}', 'CartController@download')->name('download');
 });
 

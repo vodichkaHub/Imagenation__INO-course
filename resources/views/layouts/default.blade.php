@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="shortcut icon" href="img/TRlogo.png" type="image/png"> 
-        <link rel="stylesheet" type="text/css" href="{{ URL::asset('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css') }}" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/default.css') }}">
-        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+        <link href="img/TRlogo.png" rel="shortcut icon" type="image/png"> 
+        <link href="{{ URL::asset('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link href="{{ URL::asset('css/default.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ URL::asset('https://fonts.googleapis.com/css?family=Indie+Flower') }}" rel="stylesheet">
         
         <title>Imagenation/@yield('title')</title>
     </head>

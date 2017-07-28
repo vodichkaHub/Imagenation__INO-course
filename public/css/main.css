@@ -51,6 +51,30 @@ body {
     margin-top: 20px;
 }
 
+.up-button {
+    height: 100%;
+    width: 8.3%;
+    position: fixed;
+    top: 0px;
+    left: 0;
+}
+.up-button:hover {
+    background-color: grey;
+    opacity: .08;
+}
+.up-button-text {
+    opacity: 1;
+    width: 8.3%;
+    height: 100%;
+    text-transform: uppercase;
+    position: fixed;
+    top: 50%;
+    padding-left: 3.3%;
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+}
+
 .small__avatar {
     max-height: 40px;
     min-width: 40px;
@@ -170,9 +194,7 @@ body {
 }
 
 .home__content__single-image {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
     margin-top: 45px;
 }
 
@@ -239,8 +261,12 @@ body {
     margin-bottom: 50px;
 }
 
+.cart-row {
+     border-bottom: 1px solid grey; 
+}
+
 .cart__info-img {
-    max-width: 100%;
+    max-width: 80%;
 }
 
 .cart__info {
@@ -250,6 +276,7 @@ body {
 }
 .cart__info-str {
      margin-right: 14px;
+     display: inline-block;
 }
 .cart__info-link {
     color: white;

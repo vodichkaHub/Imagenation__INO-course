@@ -47,12 +47,13 @@ class AdminController extends Controller
 
         $joinUser = Image::join('users', 'images.user_id', '=', 'users.id')->where('images.id', $image_id)->first();
         $user = User::where('id', $joinUser->id)->first();
-        
+        $oldRow = User::where('id', $joinUser->id)->first();
         $user->message = 'Your image with title ' .  $path['name'] . ' was deleted by administrator';
 
         Image::where('id', $image_id)->delete();
         
         $user->save();
+        $user->unionAll($oldRow);
 
         unlink(public_path() . '/img/works/' . $path['path']);
         unlink(public_path() . '/img/source/' . $path['path']);

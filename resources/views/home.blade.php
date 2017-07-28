@@ -1,6 +1,7 @@
 @extends('layouts.mainLayout')
     @section('title', 'home')
     @section('content')
+    <span id="up"></span>
     @section('h2')
         <div class="sub-title">
             <h2>All works</h2>
@@ -31,14 +32,23 @@
             <input type="submit" value="Search" class="home__addition__button">
         </form>
     @endsection
+
         <div class="container-fluid">
-         @if (!empty(session('info')))
+
+        @if (!empty(session('info')))
             <div class="alert alert-info">
                 {{ session('info') }}
             </div>
         @endif
+
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-1">
+                    <div class="up-button">
+                        <a href="#up" class="up-button-text">Up ^</a>
+                    </div>
+                </div>
+                <div class="col-md-10">
+
                     <div class="home__content__all-images">
 
                         @if (!isset($info))
@@ -117,6 +127,7 @@
                         
                     </div>
                 </div>
+                <div class="col-md-1"></div>
             </div>
         </div>
 <script>

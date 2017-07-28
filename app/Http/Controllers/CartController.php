@@ -61,7 +61,17 @@ class CartController extends Controller
                     ->first();
         $buy->paid = 1;
         $buy->save();
+        return back();
+    }
 
+    public function buyAll() {
+        
+        $userId = Auth::user()->id;
+        $purchase = Cart::where('user_id', $userId)->get();
+        foreach ($purchase as $buy) {
+            $buy->paid = 1;
+            $buy->save();
+        }
         return back();
     }
 

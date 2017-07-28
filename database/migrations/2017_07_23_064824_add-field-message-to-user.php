@@ -15,7 +15,7 @@ class AddFieldMessageToUser extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
            
-           $table->string('message')->nullable();
+           $table->text('message')->nullable();
         });
     }
 

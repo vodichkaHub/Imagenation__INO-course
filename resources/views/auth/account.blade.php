@@ -113,7 +113,7 @@
                                     
                                         <div class="col-md-3">
                                             <div class="main__portfolio__work-image">
-                                                <a href="{{ route('showImage', ['imageId' => $path['id']]) }}"><img class="lazy" data-original="{{ 'img/works/' . $path['path'] }}" alt="{{ Auth::user()->name }}"></a>
+                                                <a href="{{ route('showImage', ['imageId' => $path['id']]) }}"><img class="lazy" data-original="{{ 'img/source/' . $path['path'] }}" alt="{{ Auth::user()->name }}"></a>
                                             </div>
                                         </div>
                                     

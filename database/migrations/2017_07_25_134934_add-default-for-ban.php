@@ -14,7 +14,7 @@ class AddDefaultForBan extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('ban')->default(0)->change();
+            $table->boolean('ban')->default(0)->change();
         });
     }
 
