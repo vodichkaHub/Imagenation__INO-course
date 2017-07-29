@@ -23,5 +23,9 @@ class RoleTableSeeder extends Seeder
 	    $role_member->description = 'Regular Member. Can see all photos and post own.';
 	    $role_member->save();
 
+        DB::table('role_user')->insert([
+                'user_id' => 1,
+                'role_id' => 1,
+        ]);
     }
 }

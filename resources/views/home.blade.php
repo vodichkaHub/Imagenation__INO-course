@@ -1,7 +1,7 @@
 @extends('layouts.mainLayout')
     @section('title', 'home')
     @section('content')
-    <span id="up"></span>
+    
     @section('h2')
         <div class="sub-title">
             <h2>All works</h2>

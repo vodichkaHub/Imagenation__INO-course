@@ -24,64 +24,67 @@
     </head>
     <body>
         <div class="header">
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-2">
-                    <a href="{{ route('home') }}"><img src="{{ URL::asset('img/TRlogo.png') }}" alt="logo" class="logo"></a>
-                </div>
-                <div class="col-md-5">
-                    @yield('addition')
-                </div>
-                <div class="col-md-1">
-                    <a href="{{ route('showCart') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-                </div>
-                <div class="col-md-2">
-                    <div class="header__nav">
-                    
-                        <ul class="nav navbar-nav navbar-right">
-                            @if (Auth::guest())
-                                <li class="header_nav-links"><a href="{{ route('login') }}">Login</a></li>
-                                <li class="header_nav-links"><a href="{{ route('register') }}">Register</a></li>
-                            @else
-                            
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                        {{ Auth::user()->name }} <span class="caret"></span>
-                                    </a>
-                                    @if (file_exists(public_path() . '/img/avatars/' . Auth::user()->id . '.jpeg')) 
-                                        <img src="{{ URL::asset('img/avatars/' . Auth::user()->id . '.jpeg') }}" class="small__avatar" alt="avatar">
-                                    @else
-                                        <img src="{{ URL::asset('img/avatars/DefaultAvatar.png') }}" class="small__avatar" alt="avatar">
-                                    @endif
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li>
-                                            @if(Auth::user()->login == 'admin')
-                                                <a href="{{ route('admin') }}">
-                                                    Account
-                                                </a>
-                                            @else
-                                                <a href="{{ route('account') }}">
-                                                    Account
-                                                </a>
-                                            @endif
-                                            <br>
-                                            <a href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
-                                                Logout
-                                            </a>
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                {{ csrf_field() }}
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </li>
-                            
-                            @endif
-                        </ul>
+            <span id="up"></span>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2">
+                        <a href="{{ route('home') }}"><img src="{{ URL::asset('img/TRlogo.png') }}" alt="logo" class="logo"></a>
                     </div>
+                    <div class="col-md-5">
+                        @yield('addition')
+                    </div>
+                    <div class="col-md-1">
+                        <a href="{{ route('showCart') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="header__nav">
+                        
+                            <ul class="nav navbar-nav navbar-right">
+                                @if (Auth::guest())
+                                    <li class="header_nav-links"><a href="{{ route('login') }}">Login</a></li>
+                                    <li class="header_nav-links"><a href="{{ route('register') }}">Register</a></li>
+                                @else
+                                
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                            {{ Auth::user()->name }} <span class="caret"></span>
+                                        </a>
+                                        @if (file_exists(public_path() . '/img/avatars/' . Auth::user()->id . '.jpeg')) 
+                                            <img src="{{ URL::asset('img/avatars/' . Auth::user()->id . '.jpeg') }}" class="small__avatar" alt="avatar">
+                                        @else
+                                            <img src="{{ URL::asset('img/avatars/DefaultAvatar.png') }}" class="small__avatar" alt="avatar">
+                                        @endif
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                @if(Auth::user()->login == 'admin')
+                                                    <a href="{{ route('admin') }}">
+                                                        Account
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('account') }}">
+                                                        Account
+                                                    </a>
+                                                @endif
+                                                <br>
+                                                <a href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+                                                    Logout
+                                                </a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    {{ csrf_field() }}
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
                 </div>
-                <div class="col-md-1"></div>
             </div>
         </div>
     <div>
