@@ -33,7 +33,7 @@ Route::prefix('admin')->group(function() {
 
 Route::prefix('cart')->group(function() {
 
-    Route::get('show', 'CartController@showCart')->name('showCart');
+    Route::get('show', 'CartController@show')->name('showCart');
 
     Route::any('add', 'CartController@add')->name('addToCart');
 

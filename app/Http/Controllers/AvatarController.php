@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
-use App\User;
+use AvatarManager;
 
 class AvatarController extends Controller
 {
@@ -19,20 +18,12 @@ class AvatarController extends Controller
     public function setAvatar (Request $request) {
 
         if ($request->hasFile('ava')) {
-
-            $file = $request->file('ava');
-            $fileName  = Auth::user()->id . '.' . 'jpeg'; 
-            $destination = public_path() . '/img/avatars';
-            $file->move($destination, $fileName);
-            
-            $user = User::where('id', Auth::user()->id)->first();
-            $user->avatar = $fileName;
-            $user->save();
-            return redirect()->route('account');
+            if (AvatarManager::setAvatar($request->file('ava'))) {
+                
+                return back();
+            }
         }
-        else {
-            session(['Error' => 'Something went wrong']);
-            return back()->withInput();
-        }
+        
+        return back()->with('Error', 'Something went wrong');
     }
 }

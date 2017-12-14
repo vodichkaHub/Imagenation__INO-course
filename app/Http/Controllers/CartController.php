@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use CartManger;
 use App\Image;
 use App\Cart;
 use Auth;
@@ -15,52 +15,39 @@ class CartController extends Controller
         $this->middleware('auth');
     }   
 
-    public function showCart() {
+    /**
+     * 
+     * @return \Illuminate\View\View | \Illuminate\Contracts\View\Factory
+     */
+    public function show() {
 
-        $cartList = Cart::join('images', 'images.id', '=', 'carts.image_id')
-                        ->select('images.path', 'images.width', 'images.height', 'images.name', 'images.price', 'carts.user_id', 'carts.image_id', 'paid')
-                        ->where('carts.user_id', Auth::user()->id)
-                        ->get();
+        $cartList = CartManger::showCart();
+        
         return view('cart', ['cartList' => $cartList]);
     }
 
+    /**
+     * 
+     * @param Request $request
+     */
     public function add(Request $request) {
 
-        $imageId = $request->input('image_id');
-        $user = Auth::user()->id;
+        if ($request->ajax()) {
+            $imageId = $request->input('image_id');
+            $userId = Auth::user()->id;
 
-        if (!$this->cartRowIsset($imageId, $user)) {
-
-            $buy = new Cart;
-            $buy->user_id = $user;
-            $buy->image_id = $imageId;
-            $buy->paid = 0;
-            $buy->save();
+            if (!CartManger::cartRowIsset($imageId, $userIds)) {
+                Cart::addNewItem($imageId, $userId);
+            }
+            //NOTIFICATION
         }
     }
 
-    public function cartRowIsset($imageId, $id) {
-
-        $check = Cart::select('user_id')->where('image_id', $imageId)->get();
-        foreach ($check as $point) {
-            if ($point->user_id == $id) {
-                
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-    }
 
     public function buy($imageId) {
-
         $userId = Auth::user()->id;
-        $buy = Cart::where('user_id', $userId)
-                    ->where('image_id', $imageId)
-                    ->first();
-        $buy->paid = 1;
-        $buy->save();
+        Cart::buy($imageId, $userId);
+
         return back();
     }
 

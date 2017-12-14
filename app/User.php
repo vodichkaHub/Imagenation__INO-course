@@ -27,35 +27,63 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     
+    /**
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function roles() {
+        
         return $this->belongsToMany('App\Role');
     }
 
+    /**
+     * 
+     * @return type
+     */
     public function images() {
+        
         return $this->hasMany('App\Images');
     }    
 
+    /**
+     * 
+     * @param string $role
+     * @return boolean
+     */
     public function hasRole($role)
     {
     	if ($this->roles()->where('name', $role)->first()) {
     		return true;
 	    }
-	    return false;
-    }
-
-    public function hasAnyRole($roles){
         
-    	if (is_array($roles)) {
-    		foreach ($roles as $role) {
-    			if ($this->hasRole($role)) {
-    				return true;
-			    }
-		    }
-	    } else {
-    		if ($this->hasRole($roles)) {
-    			return true;
-		    }
-	    }
 	    return false;
     }
+    
+    /**
+     * 
+     * @param int $id
+     * @return boolean
+     */
+    public static function setBan($id) {
+
+        $user = self::where('id', $id)->first();
+        $user->ban = 1;
+        $user->save();
+        
+        return true;
+    }
+    
+    /**
+     * 
+     * @param int $id
+     * @return type
+     */
+    public static function unsetBan($id) {
+
+        $user = self::where('id', $id)->first();
+        $user->ban = 0;
+        $user->save();
+        
+        return true;
+    } 
 }

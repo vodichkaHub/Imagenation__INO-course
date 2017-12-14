@@ -2,59 +2,75 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use AdminManager;
 use App\User;
-use App\Image;
+use Illuminate\Http\Request;
+use ImageManager;
 
 class AdminController extends Controller
 {
+ 
     public function __construct () {
 
         $this->middleware('checkRole:administrator');
     }
 
+    /**
+     * 
+     * @return \Illuminate\View\View | \Illuminate\Contracts\View\Factory
+     */
     public function getAllUsers() {
 
-        $users = User::select('id', 'name', 'login', 'country', 'avatar', 'ban')->get();
-        return view('adminAccount', ['users' => $users]);
+        $users = AdminManager::getAllUsers();
+        
+        return view('admin-account', ['users' => $users]);
     }
 
+    /**
+     * 
+     * @param int $id
+     * @return \Illuminate\View\View | \Illuminate\Contracts\View\Factory
+     */
     public function getAllWorksByAuthor($id) {
         
-        $works = Image::join('sections', 'images.section_id', '=', 'sections.id')->select('images.id', 'images.name', 'width', 'height', 'sections.title')->where('images.user_id', $id)->get();    
-        return view('adminAccount', ['works' => $works]);
+        $works = AdminManager::getAllWorksByUser($id);
+        
+        return view('admin-account', ['works' => $works]);
     }
 
+    /**
+     * 
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function setBan($id) {
 
-        $user = User::where('id', $id)->first();
-        $user->ban = 1;
-        $user->save();
+        User::setBan($id);
+        
         return back();
     }
 
+    /**
+     * 
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function unsetBan($id) {
 
-        $user = User::where('id', $id)->first();
-        $user->ban = 0;
-        $user->save();
+        User::unsetBan($id);
+        
         return back();
     }
 
+    /**
+     * 
+     * @param int $image_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteImage($image_id) {
-
-        $path = Image::select('path', 'name')->where('id', $image_id)->first();
-
-        $joinUser = Image::join('users', 'images.user_id', '=', 'users.id')->where('images.id', $image_id)->first();
-        $user = User::where('id', $joinUser->id)->first();
-        $user->message = $user->message . "  |Your image with title " .  $path['name'] . ' was deleted by administrator';
-
-        Image::where('id', $image_id)->delete();
         
-        $user->save();
+        ImageManager::deleteImage($image_id);
 
-        unlink(public_path() . '/img/works/' . $path['path']);
-        unlink(public_path() . '/img/source/' . $path['path']);
         return back();
     }    
 }

@@ -21,7 +21,7 @@
                             <p class="listOfUsers">CONTRY: {{ $user->country }}  </p>
                         </div>
                         <div class="col-md-2">
-                            <a href="{{ route('listOfWorks', ['id' => $user->id]) }}" class="admin__link">List of works |</a>
+                            <a href="{{ route('listOfWorks', ['id' => $user->id]) }}" class="admin__link">List of works</a>
                             @if($user->ban == 0)
                                 <a href="{{ route('setBan', ['id' => $user->id]) }}" class="admin__link">Ban</a>
                             @else
@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-md-2">
                         <a href="{{ route('showImage', ['imageId' => $work->id]) }}" class="admin__link">Show image |</a>
-                        <a href="{{ route('deleteImg', ['image_id' => $work->id]) }}" class="admin__link">Delete</a>
+                        <a href="{{ route('deleteImg', ['imageId' => $work->id]) }}" class="admin__link">Delete</a>
                     </div>
                     <div class="col-md-2"></div>
                     </div>

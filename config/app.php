@@ -177,6 +177,12 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        //custom
+        App\Providers\AdminManagerServiceProvider::class,
+        App\Providers\AvatarManagerServiceProvider::class,
+        App\Providers\CartManagerServiceProvider::class,
+        App\Providers\HomeManagerServiceProvider::class,
+        App\Providers\ImageManagerServiceProvider::class,
 
     ],
 
@@ -227,6 +233,13 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        //
+        'AdminManager' => App\Managers\Admin\Facades\AdminManager::class,
+        'AvatarManager' => \App\Managers\Avatar\Facades\AvatarManager::class,
+        'CartManager' => \App\Managers\Cart\Facades\CartManager::class,
+        'HomeManager' => \App\Managers\Home\Facades\HomeManager::class,
+        'ImageManager' => \App\Managers\Image\Facades\ImageManager::class,
+        
 
     ],
 
